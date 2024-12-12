@@ -9,7 +9,7 @@ export const Navigation = () =>{
         <Navbar.Collapse>
             <Nav className="justify-content-end">
             <Nav.Item><Nav.Link href="/">Home</Nav.Link></Nav.Item>
-            <Nav.Item><Nav.Link href="/list">List</Nav.Link></Nav.Item>
+            <Nav.Item><Nav.Link href="/chore">List</Nav.Link></Nav.Item>
             </Nav>
         </Navbar.Collapse>        
     </Navbar>

@@ -1,12 +1,7 @@
 import React, {useState} from 'react';
-import { Row } from 'react-bootstrap';
-import { UserInput } from '../userInput';
+import { UserInput } from '../UserInput';
 
 export const Home = () =>{
-
- 
-
-
     return(
     <>
     <UserInput/>
