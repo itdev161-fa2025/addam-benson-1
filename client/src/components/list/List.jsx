@@ -7,29 +7,33 @@ import axios from 'axios';
 
 export const List = () => {
     const navigate = useNavigate();
-    const [items, setItems] = useState([
-        {
-            name: "test",
-            description: "test"
-        }
-    ])
+    const [pageData, setPageData] = useState({
+        arrayOfChores: [],
+        choreComponents: []
+        // {
+        //     id: 0,
+        //     name: "test",
+        //     description: "test"
+        // }
+})
 
     useEffect(() => {
         getChores();
 
-    })
+    }, [])
 
-    const getChores = () => {
-       axios.get("/api/chore");
-    }
+ const getChores = () =>{
+   axios.get('http://localhost:5000/api/chore').then(response => getChoresSuccess(response));
+   
+ }
 
     const getChoresSuccess = (response) => {
         console.log(response)
-        const listItem = response.data;
-        setItems((prev) => {
+        const listArray = response.data;
+        setPageData((prev) => {
             const n = {...prev};
-            n.name = listItem.name;
-            n.description = listItem.description;
+            n.arrayOfChores = listArray
+            n.choreComponents = listArray.map(mapItems);
             return n; 
         })
     }
@@ -40,12 +44,12 @@ export const List = () => {
 
 
     const mapItems = (item) =>{
-        return <ListGroupItem key={item.name}>{item.description}</ListGroupItem>
+        return <ListGroupItem key={item.id}>{item.description}</ListGroupItem>
     }
   return (
     <>
     <ListGroup>
-        {items && items.map((item) => mapItems(item))}
+{pageData.choreComponents}
     </ListGroup>
   </>
   )

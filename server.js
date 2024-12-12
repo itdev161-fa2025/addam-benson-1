@@ -73,10 +73,9 @@ app.post(
  * @desc Get chores for list
  */
 app.get("/api/chore", async (req, res) => {
-  const Chore = require("./models/ChoreModel.js");
   try {
-    const chores = await Chore.find({});
-    res.status(200).json(chores);
+    let chores = await Chore.find({});
+    return res.status(200).send(chores);
   } catch (error) {
     res.status(500).send("Unknown server error");
   }
